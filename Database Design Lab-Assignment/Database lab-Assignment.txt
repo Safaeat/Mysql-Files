@@ -1,0 +1,47 @@
+
+mysql -u root -p
+
+create database worksheet2;
+
+show databases;
+
+use worksheet2;
+
+create table Worksheet2(STD_ID int NOT NULL AUTO_INCREMENT,NAME varchar(255),DEPT varchar(255),CGPA varchar(255),GRAD_DATE date,PRIMARY KEY(STD_ID));
+
+
+ALTER TABLE Worksheet2 AUTO_INCREMENT=0711001;
+
+insert into Worksheet2(NAME,DEPT,CGPA,GRAD_DATE) values ('Mashrafi','CSE','3.91','2003-11-15');
+
+insert into Worksheet2(NAME,DEPT,CGPA,GRAD_DATE) values ('Sakib','CSE','3.52','2008-08-01');
+
+
+insert into Worksheet2(NAME,DEPT,CGPA,GRAD_DATE) values ('Razzak','EEE','3.56','2006-01-23');
+insert into Worksheet2(NAME,DEPT,CGPA,GRAD_DATE) values ('Ashraful','EEE','3.84','2008-02-13');
+insert into Worksheet2(NAME,DEPT,CGPA,GRAD_DATE) values ('Rafique','MEC','3.88','2000-12-20');
+insert into Worksheet2(NAME,DEPT,CGPA,GRAD_DATE) values ('Shafiul','EEE','3.57','2007-03-25');
+insert into Worksheet2(NAME,DEPT,CGPA,GRAD_DATE) values ('Kapali','CHE','3.87','2003-11-15');
+insert into Worksheet2(NAME,DEPT,CGPA,GRAD_DATE) values ('Aftab','MEC','3.25','2006-01-23');
+insert into Worksheet2(NAME,DEPT,CGPA,GRAD_DATE) values ('Nafees','CSE','3.95','2006-01-23');
+insert into Worksheet2(NAME,DEPT,CGPA,GRAD_DATE) values ('Tamim','CSE','3.81','2007-03-23');
+insert into Worksheet2(NAME,DEPT,CGPA,GRAD_DATE) values ('Rajeen','CHE','3.21','2007-03-01');
+
+
+1
+a)SELECT MIN(CGPA) from Worksheet2;
+b)SELECT MAX(GRAD_DATE) AS Latest_Graduation from Worksheet2;
+c)SELECT STD_ID , COUNT(*) AS Total_Students FROM Worksheet2;
+d)SELECT DEPT, MAX(CGPA) AS Maximum_CGPA , MIN(CGPA) AS Minimum_CGPA FROM Worksheet2 GROUP by DEPT;
+e)SELECT DEPT, MAX(GRAD_DATE) AS Latest_Gratuation FROM Worksheet2 GROUP by DEPT;
+f)SELECT DEPT , COUNT(*) AS Count_Students FROM Worksheet2 GROUP by DEPT;
+g)SELECT DEPT , MAX(CGPA) AS Maximum_CGPA , MIN(CGPA) AS Minimum_CGPA FROM Worksheet2 GROUP by DEPT
+    HAVING COUNT(*)>=3;
+h)SELECT DEPT , MAX(CGPA) AS Maximum_CGPA , MIN(CGPA) AS Minimum_CGPA FROM Worksheet2 WHERE GRAD_DATE >='2004-01-01' GROUP by DEPT;
+i)SELECT MAX(CGPA) AS Highest_CGPA FROM Worksheet2 WHERE GRAD_DATE >= '2004-01-01';
+
+2
+a)SELECT NAME , MAX(CGPA) from Worksheet2;
+b)SELECT NAME , DEPT , min(CGPA) from Worksheet2 Group by DEPT;
+c)SELECT * from Worksheet2 s where s.CGPA>(select min(CGPA) from Worksheet2 t where t.DEPT='EEE' ) and s.DEPT='CSE';
+d)SELECT * from Worksheet2 s where s.CGPA>(select max(CGPA) from Worksheet2 t where t.DEPT='EEE' ) and s.DEPT='CSE';
